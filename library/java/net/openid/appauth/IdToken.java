@@ -290,7 +290,7 @@ public class IdToken {
             // OpenID Connect Core Section 3.1.3.7. rule #11
             // Validates the nonce.
             String expectedNonce = tokenRequest.nonce;
-            if (!TextUtils.equals(this.nonce, expectedNonce)) {
+            if (expectedNonce != null && !TextUtils.equals(this.nonce, expectedNonce)) {
                 throw AuthorizationException.fromTemplate(GeneralErrors.ID_TOKEN_VALIDATION_ERROR,
                     new IdTokenException("Nonce mismatch"));
             }
